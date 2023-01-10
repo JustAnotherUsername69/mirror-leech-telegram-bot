@@ -121,11 +121,11 @@ class TgUploader:
             is_image = is_image or up_path.upper().endswith(IMAGE_SUFFIXES)
             if self.__as_doc or force_document or (not is_video and not is_audio and not is_image):
                 key = 'documents'
-                if is_video and thumb is None:
-                    thumb = take_ss(up_path, None)
-                    if self.__is_cancelled:
-                        if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
-                            osremove(thumb)
+                #if is_video and thumb is None:
+                 #   thumb = take_ss(up_path, None)
+                   # if self.__is_cancelled:
+                    #    if self.__thumb is None and thumb is not None and ospath.lexists(thumb):
+                     #       osremove(thumb)
                         return
                 self.__sent_msg = self.__sent_msg.reply_document(document=up_path,
                                                                  quote=True,
