@@ -101,12 +101,12 @@ class TgUploader:
 
     def __prepare_file(self, up_path, file_, dirpath):
         if LEECH_FILENAME_PREFIX := config_dict['LEECH_FILENAME_PREFIX']:
-            cap_mono = f"{LEECH_FILENAME_PREFIX} <code>{file_}</code>"
+            cap_mono = f"{LEECH_FILENAME_PREFIX} {file_}"
             new_path = ospath.join(dirpath, f"{LEECH_FILENAME_PREFIX} {file_}")
             osrename(up_path, new_path)
             up_path = new_path
         else:
-            cap_mono = f"<code>{file_}</code>"
+            cap_mono = f"{file_}"
         return up_path, cap_mono
 
     @retry(wait=wait_exponential(multiplier=2, min=4, max=8), stop=stop_after_attempt(3),
